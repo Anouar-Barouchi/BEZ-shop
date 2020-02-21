@@ -110,7 +110,7 @@ public class Invent extends JInternalFrame {
 		panel_1.setLayout(null);
 		panel_1.setBounds(0, 0, 1129, 31);
 		panel.add(panel_1);
-		
+
 		JLabel lblStock = new JLabel("Stock");
 		lblStock.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStock.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
@@ -142,6 +142,13 @@ public class Invent extends JInternalFrame {
 				return returnComp;
 			}
 		};
+
+		DefaultTableModel productModel = new DefaultTableModel();
+		Product.selectAllProducts(con, productModel);
+		System.out.println(productModel.getRowCount());
+		//productModel.addRow(new Object[] {"za"});
+		table.setModel(productModel);
+
 		table.setGridColor(new Color(0, 139, 139));
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -163,9 +170,6 @@ public class Invent extends JInternalFrame {
 		model.addColumn("b");
 		model.addColumn("c");
 		model.addColumn("d");
-		
-		
-		
 
 		table.setModel(model);
 
@@ -184,7 +188,7 @@ public class Invent extends JInternalFrame {
 		textField = new JTextField();
 		JPanel panel_7 = new JPanel();
 		panel_7.setToolTipText("Valider");
-		JPanel panel_6= new JPanel();
+		JPanel panel_6 = new JPanel();
 		panel_6.setToolTipText("Annuler");
 		JLabel lbl = new JLabel("Tapez les informations du produit ");
 		panel_7.addMouseListener(new MouseAdapter() {
@@ -195,16 +199,18 @@ public class Invent extends JInternalFrame {
 				panel_7.setVisible(false);
 				lbl.setVisible(false);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_7.setBackground(new Color(133, 133, 224));
 			}
-            public void mouseExited(MouseEvent e) {
-            	panel_7.setBackground(SystemColor.controlHighlight);
+
+			public void mouseExited(MouseEvent e) {
+				panel_7.setBackground(SystemColor.controlHighlight);
 			}
 		});
 		panel_7.setVisible(false);
-		
+
 		panel_6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -212,30 +218,33 @@ public class Invent extends JInternalFrame {
 				panel_6.setVisible(false);
 				panel_7.setVisible(false);
 				lbl.setVisible(false);
-				
+
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_6.setBackground(new Color(133, 133, 224));
 			}
-            public void mouseExited(MouseEvent e) {
-            	panel_6.setBackground(SystemColor.controlHighlight);
+
+			public void mouseExited(MouseEvent e) {
+				panel_6.setBackground(SystemColor.controlHighlight);
 			}
 		});
-		
+
 		panel_4.addMouseListener(new MouseAdapter() {
-                   public void mouseClicked(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent arg0) {
 				panel_6.setVisible(true);
 				panel_7.setVisible(true);
 				lbl.setVisible(true);
 				panel_4.setVisible(false);
-				
-				
+
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_4.setBackground(new Color(198, 26, 255));
 			}
+
 			public void mouseExited(MouseEvent e) {
 				panel_4.setBackground(new Color(115, 0, 153));
 			}
@@ -250,7 +259,7 @@ public class Invent extends JInternalFrame {
 		JLabel lblAjouterArticle = new JLabel("  Ajouter ");
 		Image img1 = new ImageIcon(this.getClass().getResource("/add.png")).getImage();
 		lblAjouterArticle.setIcon(new ImageIcon(img1));
-		
+
 		lblAjouterArticle.setForeground(SystemColor.text);
 		panel_4.setLayout(null);
 
@@ -265,16 +274,18 @@ public class Invent extends JInternalFrame {
 		Image img2 = new ImageIcon(this.getClass().getResource("/delete.png")).getImage();
 		lblSupprimer.setIcon(new ImageIcon(img2));
 		panel_3.addMouseListener(new MouseAdapter() {
-			
+
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				panel_3.setBorder(new MatteBorder(2, 2, 1, 1, (Color) new Color(0, 102, 255)));
 				panel_4.setBorder(null);
 				panel_2.setBorder(null);
 			}
+
 			public void mouseEntered(MouseEvent e) {
 				panel_3.setBackground(new Color(198, 26, 255));
 			}
+
 			public void mouseExited(MouseEvent e) {
 				panel_3.setBackground(new Color(115, 0, 153));
 			}
@@ -294,7 +305,7 @@ public class Invent extends JInternalFrame {
 		Image img4 = new ImageIcon(this.getClass().getResource("/editt.png")).getImage();
 		lblModifier.setIcon(new ImageIcon(img4));
 		lblModifier.setHorizontalAlignment(SwingConstants.CENTER);
-		
+
 		panel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -306,6 +317,7 @@ public class Invent extends JInternalFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_2.setBackground(new Color(198, 26, 255));
 			}
+
 			public void mouseExited(MouseEvent e) {
 				panel_2.setBackground(new Color(115, 0, 153));
 			}
@@ -318,29 +330,25 @@ public class Invent extends JInternalFrame {
 		lblModifier.setBounds(0, 0, 120, 31);
 		panel_2.add(lblModifier);
 
-		
 		textField_1 = new JTextField();
 		textField_2 = new JTextField();
 		textField_3 = new JTextField();
-		
+
 		textField.setBounds(23, 58, 202, 20);
 		panel_5.add(textField);
 		textField.setColumns(10);
 
-		
 		textField_1.setBounds(225, 58, 85, 20);
 		panel_5.add(textField_1);
 		textField_1.setColumns(10);
 
-		
 		textField_2.setBounds(495, 58, 150, 20);
 		panel_5.add(textField_2);
 		textField_2.setColumns(10);
-		
-				
-				textField_3.setBounds(645, 58, 150, 20);
-				panel_5.add(textField_3);
-				textField_3.setColumns(10);
+
+		textField_3.setBounds(645, 58, 150, 20);
+		panel_5.add(textField_3);
+		textField_3.setColumns(10);
 
 		JLabel lblDesginationArticle = new JLabel("Desgination Article");
 		lblDesginationArticle.setForeground(new Color(0, 139, 139));
@@ -365,52 +373,51 @@ public class Invent extends JInternalFrame {
 		lblPrixVente.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
 		lblPrixVente.setBounds(645, 38, 83, 14);
 		panel_5.add(lblPrixVente);
-		
+
 		textField_4 = new JTextField();
 		textField_4.setBounds(310, 58, 85, 20);
 		panel_5.add(textField_4);
 		textField_4.setColumns(10);
-		
+
 		JLabel lblUnit = new JLabel("Unit\u00E9");
 		lblUnit.setForeground(new Color(0, 139, 139));
 		lblUnit.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
 		lblUnit.setBounds(310, 39, 46, 14);
 		panel_5.add(lblUnit);
-		
+
 		JLabel lblGattogrie = new JLabel("Cat\u00E9togrie");
 		lblGattogrie.setForeground(new Color(0, 139, 139));
 		lblGattogrie.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
 		lblGattogrie.setBounds(395, 39, 61, 14);
 		panel_5.add(lblGattogrie);
-		
+
 		Choice choice = new Choice();
 		choice.setBounds(395, 58, 100, 19);
 		panel_5.add(choice);
-		
-		
+
 		panel_6.setVisible(false);
 		panel_6.setLayout(null);
 		panel_6.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panel_6.setBackground(SystemColor.controlHighlight);
 		panel_6.setBounds(861, 58, 46, 31);
 		panel_5.add(panel_6);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(15, 0, 16, 31);
 		panel_6.add(lblNewLabel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		Image img6=new ImageIcon(this.getClass().getResource("/closee.png")).getImage();
+
+		Image img6 = new ImageIcon(this.getClass().getResource("/closee.png")).getImage();
 		lblNewLabel.setIcon(new ImageIcon(img6));
-		
+
 		panel_7.setLayout(null);
 		panel_7.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panel_7.setBackground(SystemColor.controlHighlight);
 		panel_7.setBounds(805, 58, 46, 31);
 		panel_5.add(panel_7);
-		
+
 		JLabel lblValider = new JLabel("");
-		Image img8=new ImageIcon(this.getClass().getResource("/check (1).png")).getImage();
+		Image img8 = new ImageIcon(this.getClass().getResource("/check (1).png")).getImage();
 		lblValider.setIcon(new ImageIcon(img8));
 
 		lblValider.setHorizontalAlignment(SwingConstants.CENTER);
@@ -418,8 +425,7 @@ public class Invent extends JInternalFrame {
 		lblValider.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 16));
 		lblValider.setBounds(10, 0, 26, 31);
 		panel_7.add(lblValider);
-		
-		
+
 		lbl.setVisible(false);
 		lbl.setForeground(new Color(112, 128, 144));
 		lbl.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));

@@ -274,7 +274,7 @@ public void mouseExited(MouseEvent e) {
 		panel_1.setLayout(null);
 		
 		JLabel lblYaSoft = new JLabel("YA Soft");
-		lblYaSoft.setFont(new Font("Berlin Sans FB", Font.BOLD, 15));
+		lblYaSoft.setFont(new Font("Arial", Font.BOLD, 15));
 		lblYaSoft.setForeground(UIManager.getColor("Button.light"));
 		lblYaSoft.setBounds(50, 3, 63, 14);
 		panel_1.add(lblYaSoft);

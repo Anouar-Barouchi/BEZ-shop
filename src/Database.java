@@ -3,6 +3,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 
 import javax.print.attribute.standard.PrinterLocation;
 
@@ -23,10 +25,11 @@ public class Database {
                 System.out.println("connected successfully");
             } catch (SQLException ex) {
                 // log an exception. fro example:
-                System.out.println("Failed to create the database connection."); 
+                JOptionPane.showMessageDialog(null, ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (ClassNotFoundException ex) {
             // log an exception. for example:
+            JOptionPane.showMessageDialog(null, ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Driver not found."); 
         }
         return con;

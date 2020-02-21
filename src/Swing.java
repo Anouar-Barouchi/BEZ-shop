@@ -1,5 +1,10 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import javax.swing.JList;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class Swing {
 	
@@ -21,6 +26,11 @@ public class Swing {
 	
 	public static double getDoubleFrom(JTextField text) {
 		return Double.parseDouble(text.getText());
+	}
+	
+	public static void kchhaja(Connection con , DefaultTableModel model) {
+		Statement stmnt = con.createStatement():
+		ResultSet res = stmnt.executeQuery(Product.)
 	}
 	
 	
