@@ -1290,3 +1290,131 @@ create trigger  trg after  update on products [42001-200]
 2020-02-17 10:36:08 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TRIGGER  TRG AFTER  UPDATE ON PRODUCTS[*]"; expected "., FOR, QUEUE, NOWAIT, AS, CALL"; SQL statement:
 create trigger  trg after  update on products [42001-200]
+2020-02-29 11:02:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS `SALES` (
+  `ID` INT(11) UNSIGNED NOT NULL,
+  `PRODUCT_ID` INT(11) UNSIGNED NOT NULL,
+  `QTY` INT(11) NOT NULL,
+  `PRICE` DECIMAL(25,2) NOT NULL,
+  `DATE` DATE NOT NULL
+) ENGINE=[*]INNODB DEFAULT CHARSET=UTF8"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS `sales` (
+  `id` int(11) unsigned NOT NULL,
+  `product_id` int(11) unsigned NOT NULL,
+  `qty` int(11) NOT NULL,
+  `price` decimal(25,2) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [42001-200]
+2020-02-29 11:04:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CATEGORIES" not found; SQL statement:
+ALTER TABLE `products`
+  ADD CONSTRAINT `FK_products` FOREIGN KEY (`categorie_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE [42102-200]
+2020-02-29 11:05:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CATEGORIES" not found; SQL statement:
+ALTER TABLE `products`
+  ADD CONSTRAINT `FK_products` FOREIGN KEY (`categorie_id`) REFERENCES `categories` (`id`) [42102-200]
+2020-02-29 11:06:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "CATEGORIE_ID" not found; SQL statement:
+ALTER TABLE `products`
+  ADD CONSTRAINT `FK_products` FOREIGN KEY (`categorie_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.getColumn(Table.java:703)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:115)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:216)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:78)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2020-02-29 11:08:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE `PRODUCTS`
+  ADD CONSTRAINT  FOREIGN[*] KEY (`ID_CAT`) REFERENCES `CATEGORIES` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE"; expected "identifier"; SQL statement:
+ALTER TABLE `products`
+  ADD CONSTRAINT  FOREIGN KEY (`id_cat`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE [42001-200]
+2020-02-29 11:48:53 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE `CATEGORIES`
+  ADD PRIMARY KEY (`ID`),[*]
+  ADD UNIQUE KEY `NAME` (`NAME`)"; SQL statement:
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`) [42000-200]
+2020-02-29 11:49:33 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE `CATEGORIES`
+  ADD PRIMARY KEY (`ID`),[*]
+  ADD UNIQUE KEY (`NAME`)"; SQL statement:
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY (`name`) [42000-200]
+2020-02-29 11:49:47 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE `CATEGORIES`
+   PRIMARY[*] KEY (`ID`),
+  ADD UNIQUE KEY (`NAME`)"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE `categories`
+   PRIMARY KEY (`id`),
+  ADD UNIQUE KEY (`name`) [42001-200]
+2020-02-29 11:49:52 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE `CATEGORIES`
+   PRIMARY[*] KEY (`ID`),
+  UNIQUE KEY (`NAME`)"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE `categories`
+   PRIMARY KEY (`id`),
+  UNIQUE KEY (`name`) [42001-200]
+2020-02-29 11:50:52 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE CATEGORIES SET  ID[*] PRIMARY KEY"; expected "REFERENTIAL_INTEGRITY"; SQL statement:
+alter table categories set  id primary key [42001-200]
+2020-02-29 11:51:30 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE CATEGORIES SET  PRIMARY[*] KEY ('id')"; expected "REFERENTIAL_INTEGRITY"; SQL statement:
+alter table categories set  primary key ('id') [42001-200]
+2020-02-29 11:51:39 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE CATEGORIES SET  PRIMARY[*] KEY ID"; expected "REFERENTIAL_INTEGRITY"; SQL statement:
+alter table categories set  primary key id [42001-200]
+2020-02-29 11:54:16 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE CATEGORIES  ADD CONSTRAINT CAT_PK PRIMARYKEY[*](ID)"; expected "., COMMENT, PRIMARY, INDEX, KEY, CHECK, UNIQUE, FOREIGN"; SQL statement:
+ALTER TABLE categorIES  ADD CONSTRAINT cat_pk PRIMARYKEY(id) [42001-200]
+2020-02-29 11:57:58 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE PRODUCTS
+  ADD CONSTRAINT FK_PRODUCTS FOREIGN KEY ('id_cat'[*]) REFERENCES CATEGORIES ('id')"; expected "identifier"; SQL statement:
+ALTER TABLE products
+  ADD CONSTRAINT FK_products FOREIGN KEY ('id_cat') REFERENCES categories ('id') [42001-200]
+2020-02-29 12:01:19 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE PRODUCTS
+  ADD CONSTRAINT 'fk_products'[*] FOREIGN KEY (ID_CAT) REFERENCES CATEGORIES (ID)"; expected "identifier"; SQL statement:
+ALTER TABLE products
+  ADD CONSTRAINT 'fk_products' FOREIGN KEY (id_cat) REFERENCES categories (id) [42001-200]
+2020-02-29 12:46:35 database: wrong user or password; user: "STOCK"
+org.h2.message.DbException: Wrong user name or password [28000-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.engine.Engine.openSession(Engine.java:131)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:309)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:289)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:785)
+	at org.h2.server.web.WebApp.login(WebApp.java:1008)
+	at org.h2.server.web.WebApp.process(WebApp.java:223)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebThread.process(WebThread.java:139)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:461)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 21 more

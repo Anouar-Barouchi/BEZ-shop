@@ -28,20 +28,21 @@ public class Maiouna {
 		Product p = new Product(12,"dqsdq","kchhwayaj","apple",23,1222,13333,1);
 		java.sql.Statement stmnt = null ;
 		ResultSet res = null;
-		/*try
+		try
 		{
 			stmnt = con.createStatement();
 			res = stmnt.executeQuery("select * from products");
 			while(res.next())
 			{
-				System.out.println("ss");
+				System.out.println("sss");
+				System.out.println(res.getInt("id_product"));
 			}
 
 		}catch(SQLException e)
 		{
 			JOptionPane.showMessageDialog(null, e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
-		}*/
-		p.removeProduct(con);
+		}
+		//p.removeProduct(con);
 		
 		
 	}
